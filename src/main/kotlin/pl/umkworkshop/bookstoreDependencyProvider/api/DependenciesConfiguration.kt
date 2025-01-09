@@ -12,7 +12,7 @@ class DependenciesConfiguration {
     var coreInformationErrorRate: Int = 0
     var stockErrorRate: Int = 0
 
-    var descriptionErrorDelay: Long = 100
-    var coreInformationErrorDelay: Long = 100
-    var stockErrorDelay: Long = 100
+    var descriptionErrorDelay: Long = 0
+    var coreInformationErrorDelay: Long = 0
+    var stockErrorDelay: Long = 0
 }
