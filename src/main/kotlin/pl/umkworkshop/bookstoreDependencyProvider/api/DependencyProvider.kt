@@ -21,7 +21,11 @@ class DependencyProvider(
 
         Thread.sleep(dependenciesConfiguration.coreInformationDelay)
 
-        return prepareResponseEntity(dependenciesConfiguration.coreInformationErrorRate, coreInformationProvider.getCoreInformationById(id.toLong()))
+        return prepareResponseEntity(
+            dependenciesConfiguration.coreInformationErrorRate,
+            dependenciesConfiguration.coreInformationErrorDelay,
+            coreInformationProvider.getCoreInformationById(id.toLong())
+        )
     }
 
     @GetMapping("/descriptionById/{id}")
@@ -29,7 +33,11 @@ class DependencyProvider(
 
         Thread.sleep(dependenciesConfiguration.descriptionDelay)
 
-        return prepareResponseEntity(dependenciesConfiguration.descriptionErrorRate, descriptionProvider.getDescriptionById(id.toLong()))
+        return prepareResponseEntity(
+            dependenciesConfiguration.descriptionErrorRate,
+            dependenciesConfiguration.descriptionErrorDelay,
+            descriptionProvider.getDescriptionById(id.toLong())
+        )
     }
 
     @GetMapping("/stockById/{id}")
@@ -37,11 +45,16 @@ class DependencyProvider(
 
         Thread.sleep(dependenciesConfiguration.stockDelay)
 
-        return prepareResponseEntity(dependenciesConfiguration.stockErrorRate, stockProvider.getStockById(id.toLong()))
+        return prepareResponseEntity(
+            dependenciesConfiguration.stockErrorRate,
+            dependenciesConfiguration.stockErrorDelay,
+            stockProvider.getStockById(id.toLong())
+        )
     }
 
-    private fun prepareResponseEntity(errorRate: Int, body: Any): ResponseEntity<Any> {
+    private fun prepareResponseEntity(errorRate: Int, errorDelay: Long, body: Any): ResponseEntity<Any> {
         if ((1..100).random() <= errorRate) {
+            Thread.sleep(errorDelay)
             return ResponseEntity.status(500).body("Error")
         }
 

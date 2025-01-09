@@ -21,6 +21,10 @@ class DependenciesConfigApplier(
         dependenciesConfiguration.coreInformationErrorRate = configValues.coreInformationErrorRate
         dependenciesConfiguration.stockErrorRate = configValues.stockErrorRate
 
+        dependenciesConfiguration.descriptionErrorDelay = configValues.descriptionErrorDelay
+        dependenciesConfiguration.coreInformationErrorDelay = configValues.coreInformationErrorDelay
+        dependenciesConfiguration.stockErrorDelay = configValues.stockErrorDelay
+
         return getConfig().toString()
     }
 
@@ -32,7 +36,10 @@ class DependenciesConfigApplier(
             stockDelay = dependenciesConfiguration.stockDelay,
             descriptionErrorRate = dependenciesConfiguration.descriptionErrorRate,
             coreInformationErrorRate = dependenciesConfiguration.coreInformationErrorRate,
-            stockErrorRate = dependenciesConfiguration.stockErrorRate
+            stockErrorRate = dependenciesConfiguration.stockErrorRate,
+            descriptionErrorDelay = dependenciesConfiguration.descriptionErrorDelay,
+            coreInformationErrorDelay = dependenciesConfiguration.coreInformationErrorDelay,
+            stockErrorDelay = dependenciesConfiguration.stockErrorDelay
         )
     }
 }
